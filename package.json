@@ -1,0 +1,41 @@
+{
+  "name": "progtonode-graphql-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js",
+    "build": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
+    "start": "NODE_ENV=production node dist/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "apollo-server-core": "^2.5.0",
+    "camelize": "^1.0.0",
+    "cors": "^2.8.5",
+    "disconnect": "^1.2.1",
+    "dotenv": "^8.0.0",
+    "git": "^0.1.5",
+    "graphql-shield": "^5.3.5",
+    "graphql-yoga": "^1.17.4",
+    "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.5.0",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.0-beta",
+    "cz-conventional-changelog": "2.1.0",
+    "nodemon": "^1.18.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

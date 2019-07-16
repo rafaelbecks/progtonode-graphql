@@ -1,0 +1,13 @@
+version: "3"
+services:
+  db:
+    image: "bitnami/mongodb:latest"
+    ports:
+      - '27017:27017'
+    environment:
+      MONGODB_USERNAME: festyz
+      MONGODB_PASSWORD: festyz
+      MONGODB_DATABASE: festyz
+      MONGODB_ROOT_PASSWORD: festyz
+    volumes:
+      - './containers/mongo:/data/db'
