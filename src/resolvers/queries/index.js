@@ -7,9 +7,9 @@ export const queriesResolver = {
     return await search(query, { type, perPage, page });
   },
 
-  async graphConstruct(parents, { artistId, level }, context){
+  async graphConstruct(parents, { artistId, level, withReleases }, context){
 
-    return await getGraph(artistId, level);
+    return await getGraph(artistId, level, withReleases);
 
   } 
 }

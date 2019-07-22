@@ -29,5 +29,12 @@ const getArtist = async (id) => (new Promise((resolve, reject) => {
   })
 }));
 
-export { search, getArtist };
+const getReleasesByArtist = async (id) => (new Promise((resolve, reject) => {
+  getDiscogsClient().getArtistReleases(id, (err, data) =>  {
+    if(err) reject(err);
+    resolve(camelize(data));
+  })
+}));
+
+export { search, getArtist, getReleasesByArtist };
 

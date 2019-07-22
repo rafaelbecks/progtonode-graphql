@@ -1,4 +1,4 @@
-import { getArtist } from '../../api';
+import { getArtist, getReleasesByArtist } from '../../api';
 import { mergeNodesAndLinks } from '../../utils';
 
 const graphBuilder = async (artist) => {
@@ -29,8 +29,14 @@ const graphBuilder = async (artist) => {
 
 };
 
-const getGraph = async (artistId, level) => {
+const getGraph = async (artistId, level, withReleases) => {
     let artist = await getArtist(artistId);
+
+    if(withReleases){
+        let { releases } = await getReleasesByArtist(artistId);
+        let artistsFromReleases = [...new Set(releases.map(({artist}) => artist))];    
+    }
+
     let graph = await graphBuilder(artist);
 
     if(level > 1){
