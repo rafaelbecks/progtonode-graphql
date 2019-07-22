@@ -3,7 +3,7 @@ import { mergeNodesAndLinks } from '../../utils';
 
 const graphBuilder = async (artist) => {
 
-    const relationship = artist.members || artist.groups;
+    const relationship = (artist.members || artist.groups) || [];
 
     const firstNode = [{
         id: artist.id,
