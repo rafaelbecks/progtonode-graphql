@@ -5,9 +5,9 @@ services:
     ports:
       - '27017:27017'
     environment:
-      MONGODB_USERNAME: festyz
-      MONGODB_PASSWORD: festyz
-      MONGODB_DATABASE: festyz
-      MONGODB_ROOT_PASSWORD: festyz
+      MONGODB_USERNAME: graph-test
+      MONGODB_PASSWORD: graph-test
+      MONGODB_DATABASE: graph-test
+      MONGODB_ROOT_PASSWORD: graph-test
     volumes:
       - './containers/mongo:/data/db'

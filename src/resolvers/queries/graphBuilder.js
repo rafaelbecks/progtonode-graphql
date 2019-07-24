@@ -50,4 +50,32 @@ const getGraph = async (artistId, level, withReleases) => {
     return { artist, graph };
 }
 
-export { graphBuilder, getGraph };
+const symptonGraphBuilder = async (sympton) => {
+
+    const relationship = (sympton.diseases || sympton.symptons) || [];
+
+    const firstNode = [{
+        id: sympton,
+        label: sympton,
+        group:0
+    }]
+    
+    const assoc = relationship.map((item) => ({
+        id: item,
+        label: item,
+        active: true,
+        group: 1
+    }));
+
+    let nodes = [...firstNode, ...assoc];
+
+    let links = relationship.map((item) => ({
+        source: sympton,
+        target: item
+    }));
+
+    return { nodes, links }
+
+};
+
+export { graphBuilder, getGraph, symptonGraphBuilder };

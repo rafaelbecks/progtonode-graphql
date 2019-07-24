@@ -1,0 +1,13 @@
+Hypothermia	Radiation Injuries, Experimental	2	3.8908724307943063
+Hypothermia	Self Mutilation	1	1.9454362153971532
+Hypothermia	Crush Syndrome	1	1.9454362153971532
+Hypothermia	Thoracic Injuries	1	1.9454362153971532
+Hypothermia	Wounds, Nonpenetrating	2	3.8908724307943063
+Hypothermia	Wounds, Penetrating	1	1.9454362153971532
+Hypothermia	Wounds, Stab	1	1.9454362153971532
+Body Weight	Bacterial Infections	58	19.893295134396368
+Body Weight	Bacteremia	5	1.714939235723825
+Body Weight	Brain Abscess	1	0.342987847144765
+Body Weight	Meningitis, Bacterial	4	1.37195138857906
+Body Weight	Meningitis, Haemophilus	2	0.68597569428953
+Body Weight	Meningitis, Pneumococcal	3	1.028963541434295

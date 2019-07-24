@@ -2,11 +2,17 @@ import { GraphQLServer } from 'graphql-yoga'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
 import  cors from 'cors';
-import { artistSearch } from './api';
+import models from '../data/models';
+import { startDB } from './db';
 
 require('dotenv').config()
 
-const context = {}
+const db = startDB();
+
+const context = {
+  models,
+  db
+}
 
 const server = new GraphQLServer({
   typeDefs,
@@ -18,7 +24,6 @@ const server = new GraphQLServer({
 
 const opts = {
   port: process.env.PORT,
-  bodyParserOptions: { limit: "50mb", type: "application/json" },
 }
 
 server.express.use(cors());

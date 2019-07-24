@@ -1,6 +1,14 @@
 export const rootTypesDef = `
 
 scalar image
+scalar genericResult
+
+type Result {
+  _id: ID
+  name: String
+  diseases: [String]
+  TFIDFScore: Int
+}
 
 type Pagination {
   perPage: Int
@@ -49,6 +57,15 @@ type Graph {
 type GraphSearchResponse { 
   artist: Artist
   graph: Graph
+}
+
+type GenericGraphResponse {
+  name: String,
+  graph: Graph
+}
+
+type GenericSearchResponse {
+  results: [Result]
 }
 
 `
