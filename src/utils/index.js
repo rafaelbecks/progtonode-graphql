@@ -2,7 +2,7 @@
 const mergeNodesAndLinks = (graph, nextLevelGraphs) => {
 
 	nextLevelGraphs.forEach((item) => {
-		item.graph.nodes.forEach(node => {
+		item && item.graph.nodes.forEach(node => {
 			if(!graph.nodes.find((eachNode) => eachNode.id === node.id))
 				graph.nodes.push(node);
 		});

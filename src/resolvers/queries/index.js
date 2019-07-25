@@ -1,6 +1,6 @@
 import { search, getArtist } from '../../api';
-import { graphBuilder, getGraph, symptonGraphBuilder } from './graphBuilder';
-import Symptons from '../../../data/models/Symptons';
+import { graphBuilder, getGraph, symptonGraphBuilder, getGenericGraph } from './graphBuilder';
+import Diseases from '../../../data/models/Diseases';
 
 export const queriesResolver = {
 
@@ -13,16 +13,14 @@ export const queriesResolver = {
     return await getGraph(artistId, level, withReleases);
 
   },
-  async symptonSearch(parents, { query }, context){
+  async diseaseSearch(parents, { query }, context){
     const regexCriteria = { $regex: `.*${query}.*`, $options: 'i'};
-    const symptons = await Symptons.find({ name: regexCriteria });
-    return { results: symptons };
+    const diseases = await Diseases.find({ name: regexCriteria });
+    return { results: diseases };
   },
-  async symptonGraph(parents, { name, level }, context){
-    const sympton = await Symptons.findOne({ name });
-
-    const graph = symptonGraphBuilder(sympton);
-    console.log(graph);
-    //return { graph };
+  async diseaseGraph(parents, { name, level }, context){
+    const sympton = await Diseases.findOne({ name });
+    const graph = await getGenericGraph(sympton, level);
+    return { graph };
   } 
 }

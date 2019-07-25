@@ -3,13 +3,6 @@ export const rootTypesDef = `
 scalar image
 scalar genericResult
 
-type Result {
-  _id: ID
-  name: String
-  diseases: [String]
-  TFIDFScore: Int
-}
-
 type Pagination {
   perPage: Int
   pages: Int
@@ -65,7 +58,7 @@ type GenericGraphResponse {
 }
 
 type GenericSearchResponse {
-  results: [Result]
+  results: [genericResult]
 }
 
 `

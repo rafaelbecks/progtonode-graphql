@@ -1,4 +1,5 @@
 import { getArtist, getReleasesByArtist } from '../../api';
+import Symptons from '../../../data/models/Symptons';
 import { mergeNodesAndLinks } from '../../utils';
 
 const graphBuilder = async (artist) => {
@@ -55,8 +56,8 @@ const symptonGraphBuilder = async (sympton) => {
     const relationship = (sympton.diseases || sympton.symptons) || [];
 
     const firstNode = [{
-        id: sympton,
-        label: sympton,
+        id: sympton.name,
+        label: sympton.name,
         group:0
     }]
     
@@ -70,7 +71,7 @@ const symptonGraphBuilder = async (sympton) => {
     let nodes = [...firstNode, ...assoc];
 
     let links = relationship.map((item) => ({
-        source: sympton,
+        source: sympton.name,
         target: item
     }));
 
@@ -78,4 +79,31 @@ const symptonGraphBuilder = async (sympton) => {
 
 };
 
-export { graphBuilder, getGraph, symptonGraphBuilder };
+const getGenericGraph = async (mainNode, level) => {
+
+    let graph;
+
+    if(typeof mainNode === "object"){
+        graph = await symptonGraphBuilder(mainNode);
+    }else{
+        const disease = await Symptons.findOne({ name: mainNode });
+        if(disease){
+            graph = await symptonGraphBuilder(disease);
+        }else{
+            graph = { nodes: [], links: []};
+        }
+    }
+
+    if(level > 1){
+        const nextLevelGraphs = await Promise.all(
+            graph.nodes.map(
+                async ({id}) => await getGenericGraph(id,level - 1))
+        ); 
+    
+    graph = mergeNodesAndLinks(graph,nextLevelGraphs);
+    }
+    return graph;
+}
+
+
+export { graphBuilder, getGraph, symptonGraphBuilder, getGenericGraph };
