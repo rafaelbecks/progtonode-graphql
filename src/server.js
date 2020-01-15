@@ -7,18 +7,18 @@ import { startDB } from './db';
 
 require('dotenv').config()
 
-const db = startDB();
+// const db = startDB();
 
-const context = {
-  models,
-  db
-}
+// const context = {
+//   models,
+//   db
+// }
 
 const server = new GraphQLServer({
   typeDefs,
   resolvers,
   context: request => ({
-    ...context,
+    // ...context,
     ...request,
 })});
 
