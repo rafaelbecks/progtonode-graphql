@@ -2,8 +2,8 @@ import { GraphQLServer } from 'graphql-yoga'
 import typeDefs from './typeDefs'
 import resolvers from './resolvers'
 import  cors from 'cors';
-import models from '../data/models';
-import { startDB } from './db';
+// import models from '../data/models';
+// import { startDB } from './db';
 
 require('dotenv').config()
 
