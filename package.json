@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "apollo-server-core": "^2.5.0",
+    "apollo-server-core": "^2.14.2",
     "camelize": "^1.0.0",
     "cors": "^2.8.5",
     "disconnect": "^1.2.1",
